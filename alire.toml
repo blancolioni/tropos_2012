@@ -10,5 +10,3 @@ tags = ["utility", "config", "json", "xml"]
 
 website = "https://github.com/blancolioni/tropos"
 
-[[depends-on]]
-wl_lib = "~0.1.0-dev"

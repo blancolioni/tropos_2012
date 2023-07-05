@@ -1,6 +1,8 @@
 private with Ada.Containers.Vectors;
 private with Ada.Strings.Unbounded;
-private with WL.String_Maps;
+private with Ada.Containers.Indefinite_Hashed_Maps;
+private with Ada.Strings.Equal_Case_Insensitive;
+private with Ada.Strings.Hash_Case_Insensitive;
 
 with Ada.Iterator_Interfaces;
 
@@ -258,7 +260,11 @@ private
       new Ada.Containers.Vectors (Positive, Configuration_Access);
 
    package Attribute_Maps is
-     new WL.String_Maps (String);
+     new Ada.Containers.Indefinite_Hashed_Maps
+     (Key_Type        => String,
+      Element_Type    => String,
+      Hash            => Ada.Strings.Hash_Case_Insensitive,
+      Equivalent_Keys => Ada.Strings.Equal_Case_Insensitive);
 
    type Configuration is tagged
       record
